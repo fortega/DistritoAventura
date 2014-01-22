@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LasTacasModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="LasTacasModelStoreContainer">
+    <EntitySet Name="Compra" EntityType="LasTacasModel.Store.Compra" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Item" EntityType="LasTacasModel.Store.Item" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ItemCompra" EntityType="LasTacasModel.Store.ItemCompra" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PagoEfectivo" EntityType="LasTacasModel.Store.PagoEfectivo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PagoPrepago" EntityType="LasTacasModel.Store.PagoPrepago" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PagoRedcompra" EntityType="LasTacasModel.Store.PagoRedcompra" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Persona" EntityType="LasTacasModel.Store.Persona" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Prepago" EntityType="LasTacasModel.Store.Prepago" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Compra_Persona" Association="LasTacasModel.Store.FK_Compra_Persona">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Compra" EntitySet="Compra" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemCompra_Compra" Association="LasTacasModel.Store.FK_ItemCompra_Compra">
+      <End Role="Compra" EntitySet="Compra" />
+      <End Role="ItemCompra" EntitySet="ItemCompra" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemCompra_Item" Association="LasTacasModel.Store.FK_ItemCompra_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="ItemCompra" EntitySet="ItemCompra" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PagoEfectivo_Compra" Association="LasTacasModel.Store.FK_PagoEfectivo_Compra">
+      <End Role="Compra" EntitySet="Compra" />
+      <End Role="PagoEfectivo" EntitySet="PagoEfectivo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PagoPrepago_Compra" Association="LasTacasModel.Store.FK_PagoPrepago_Compra">
+      <End Role="Compra" EntitySet="Compra" />
+      <End Role="PagoPrepago" EntitySet="PagoPrepago" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PagoPrepago_Prepago" Association="LasTacasModel.Store.FK_PagoPrepago_Prepago">
+      <End Role="Prepago" EntitySet="Prepago" />
+      <End Role="PagoPrepago" EntitySet="PagoPrepago" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PagoRedcompra_Compra" Association="LasTacasModel.Store.FK_PagoRedcompra_Compra">
+      <End Role="Compra" EntitySet="Compra" />
+      <End Role="PagoRedcompra" EntitySet="PagoRedcompra" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Compra">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Persona" Type="int" Nullable="false" />
+    <Property Name="Total" Type="bigint" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="varchar(max)" Nullable="false" />
+    <Property Name="Valor" Type="int" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ItemCompra">
+    <Key>
+      <PropertyRef Name="Compra" />
+      <PropertyRef Name="Item" />
+    </Key>
+    <Property Name="Compra" Type="bigint" Nullable="false" />
+    <Property Name="Item" Type="int" Nullable="false" />
+    <Property Name="Valor" Type="int" Nullable="false" />
+    <Property Name="Cantidad" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PagoEfectivo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Compra" Type="bigint" Nullable="false" />
+    <Property Name="Valor" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PagoPrepago">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Compra" Type="bigint" Nullable="false" />
+    <Property Name="Prepago" Type="int" Nullable="false" />
+    <Property Name="Valor" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PagoRedcompra">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Compra" Type="bigint" Nullable="false" />
+    <Property Name="Tipo" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="Transaccion" Type="int" Nullable="false" />
+    <Property Name="Autorizacion" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RUT" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Apellido" Type="varchar(max)" Nullable="false" />
+    <Property Name="Nombre" Type="varchar(max)" Nullable="false" />
+    <Property Name="Email" Type="varchar(max)" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="FechaNacimiento" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="Prepago">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Saldo" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Compra_Persona">
+    <End Role="Persona" Type="LasTacasModel.Store.Persona" Multiplicity="1" />
+    <End Role="Compra" Type="LasTacasModel.Store.Compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Compra">
+        <PropertyRef Name="Persona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemCompra_Compra">
+    <End Role="Compra" Type="LasTacasModel.Store.Compra" Multiplicity="1" />
+    <End Role="ItemCompra" Type="LasTacasModel.Store.ItemCompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compra">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ItemCompra">
+        <PropertyRef Name="Compra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemCompra_Item">
+    <End Role="Item" Type="LasTacasModel.Store.Item" Multiplicity="1" />
+    <End Role="ItemCompra" Type="LasTacasModel.Store.ItemCompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ItemCompra">
+        <PropertyRef Name="Item" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PagoEfectivo_Compra">
+    <End Role="Compra" Type="LasTacasModel.Store.Compra" Multiplicity="1" />
+    <End Role="PagoEfectivo" Type="LasTacasModel.Store.PagoEfectivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compra">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PagoEfectivo">
+        <PropertyRef Name="Compra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PagoPrepago_Compra">
+    <End Role="Compra" Type="LasTacasModel.Store.Compra" Multiplicity="1" />
+    <End Role="PagoPrepago" Type="LasTacasModel.Store.PagoPrepago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compra">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PagoPrepago">
+        <PropertyRef Name="Compra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PagoPrepago_Prepago">
+    <End Role="Prepago" Type="LasTacasModel.Store.Prepago" Multiplicity="1" />
+    <End Role="PagoPrepago" Type="LasTacasModel.Store.PagoPrepago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prepago">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PagoPrepago">
+        <PropertyRef Name="Prepago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PagoRedcompra_Compra">
+    <End Role="Compra" Type="LasTacasModel.Store.Compra" Multiplicity="1" />
+    <End Role="PagoRedcompra" Type="LasTacasModel.Store.PagoRedcompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compra">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PagoRedcompra">
+        <PropertyRef Name="Compra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

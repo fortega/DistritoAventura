@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POS", "POS\POS.csproj", "{DAA2ECB5-4AEA-43E0-B64F-D830CC61F415}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAA2ECB5-4AEA-43E0-B64F-D830CC61F415}.Debug|x86.ActiveCfg = Debug|x86
+		{DAA2ECB5-4AEA-43E0-B64F-D830CC61F415}.Debug|x86.Build.0 = Debug|x86
+		{DAA2ECB5-4AEA-43E0-B64F-D830CC61F415}.Release|x86.ActiveCfg = Release|x86
+		{DAA2ECB5-4AEA-43E0-B64F-D830CC61F415}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
