@@ -6,13 +6,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Net.Mail;
+using System.Net;
 
 namespace POS
 {
     public partial class Main : Form
     {
         private Color ColorOK = Color.LightGreen;
-        private Color ColorError = Color.Red;
+        private Color ColorError = Color.White;
         private Persona sPersona;
         private Item[] Items;
         private NumericUpDown[] NumItems;
@@ -22,10 +24,11 @@ namespace POS
             set
             {
                 sPersona = value; //TODO
-                if (sPersona != null)
+
+                if (value != null)
                 {
-                    tbRUT.Text = sPersona.RUT;
-                    lblNombreRes.Text = string.Concat(sPersona.Apellido, ", ", sPersona.Nombre);
+                    tbRUT.Text = value.RUT;
+                    lblNombreRes.Text = value.ToString();
                 }
                 else
                 {
@@ -50,7 +53,7 @@ namespace POS
                 .ToArray();
             NumItems = new NumericUpDown[Items.Length];
 
-            
+
 
             //tlItems.ColumnCount = 4;
             //tlItems.ColumnStyles.Clear();
@@ -62,7 +65,7 @@ namespace POS
             //tlItems.RowCount = 1;
             tlItems.RowStyles.Clear();
             tlItems.RowStyles.Add(new RowStyle());
-            
+
             tlItems.Controls.Clear();
             //tlItems.Controls.Add(lblItemID, 0, 0);
             tlItems.Controls.Add(lblItemNombre, 0, 0);
@@ -78,7 +81,7 @@ namespace POS
                 tlItems.RowStyles.Add(new RowStyle());
                 //tlItems.Controls.Add(new Label() { Text = Items[i].ID.ToString() }, 0, i + 1);
                 tlItems.Controls.Add(new Label() { Text = Items[i].Nombre }, 0, i + 1);
-                tlItems.Controls.Add(new Label() { Text = Items[i].Valor.ToString() }, 1, i + 1);
+                tlItems.Controls.Add(new Label() { Text = Items[i].Valor.ToString(Properties.Settings.Default.FormatoPlata) }, 1, i + 1);
                 tlItems.Controls.Add(NumItems[i], 2, i + 1);
             }
 
@@ -88,10 +91,14 @@ namespace POS
         {
             int total = 0;
             for (int i = 0; i < Items.Length; i++)
+            {
                 total += Items[i].Valor * (int)NumItems[i].Value;
 
-            lblTotal.Text = total.ToString("$#,0");
-            btnPagar.Enabled = total > 0;
+                NumItems[i].BackColor = NumItems[i].Value > 0 ? ColorOK : ColorError;
+            }
+
+            lblTotal.Text = total.ToString(Properties.Settings.Default.FormatoPlata);
+            btnPagar.Enabled = total > 0 && SelecPersona != null;
         }
 
         private void tbRUT_TextChanged(object sender, EventArgs e)
@@ -108,6 +115,7 @@ namespace POS
                 }
                 catch
                 {
+                    this.SelecPersona = null;
                     // RUT valido, persona no ingresada
                     if (Properties.Settings.Default.PreguntaCrearPersona)
                     {
@@ -118,13 +126,16 @@ namespace POS
                                 SelecPersona = frm.Persona;
                         }
                     }
-                    
+
                 }
             }
             else
             {
+                SelecPersona = null;
                 tb.BackColor = ColorError;
             }
+
+            NumItemChange(null, null);
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -166,7 +177,91 @@ namespace POS
         {
             MantItems frm = new MantItems();
             if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
                 CargarItems();
+                NumItemChange(null, null);
+            }
+        }
+
+        private void btnPagar_Click(object sender, EventArgs e)
+        {
+            List<Item> curItems = new List<Item>();
+            List<int> curCantidades = new List<int>();
+
+            for (int i = 0; i < NumItems.Length; i++)
+            {
+                if (NumItems[i].Value > 0)
+                {
+                    curItems.Add(this.Items[i]);
+                    curCantidades.Add((int)this.NumItems[i].Value);
+                }
+            }
+
+            Pago frm = new Pago(curItems.ToArray(), curCantidades.ToArray(), SelecPersona);
+            if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                Limpiar();
+        }
+
+        private void btnUltimasVentas_Click(object sender, EventArgs e)
+        {
+            UltimasVentas frm = new UltimasVentas();
+            frm.ShowDialog();
+        }
+
+        private void btnMantPrepago_Click(object sender, EventArgs e)
+        {
+            MantPrepago frm = new MantPrepago();
+            frm.ShowDialog();
+        }
+
+        private void btnEnvioReporte_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.AddExtension = true;
+            sfd.CheckPathExists = true;
+            sfd.DefaultExt = "xlsx";
+            sfd.FileName = DateTime.Now.ToString("yyyMMdd-HHmm");
+            sfd.Filter = "Excel|*.xlsx";
+            
+            if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                this.Cursor = Cursors.WaitCursor;
+                bool incluyeDetalle = MessageBox.Show("Incluir detalle?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes;
+                GeneraExcel.Genera(sfd.FileName, incluyeDetalle);
+                this.Cursor = Cursors.Default;
+
+                if (MessageBox.Show("Enviar por mail?", "Mail", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    try
+                    {
+                        this.Cursor = Cursors.WaitCursor;
+                        MailMessage message = new MailMessage();
+                        message.Subject = "POS DistritoAventura";
+                        message.From = new MailAddress(Properties.Settings.Default.GmailUser);
+                        foreach (string to in Properties.Settings.Default.GmailTo.Split(','))
+                            message.To.Add(new MailAddress(to));
+                        message.Attachments.Add(new Attachment(sfd.FileName));
+
+                        SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587)
+                        {
+                            EnableSsl = true,
+                            DeliveryMethod = SmtpDeliveryMethod.Network,
+                            Credentials = new NetworkCredential(Properties.Settings.Default.GmailUser, Properties.Settings.Default.GmailPass)
+                        };
+                        smtp.Send(message);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        this.Cursor = Cursors.Default;
+                    }
+                }
+
+                System.Diagnostics.Process.Start(sfd.FileName);
+            }
         }
     }
 }

@@ -14,6 +14,46 @@
           <EntitySet Name="PagoRedcompra" EntityType="LasTacasModel.Store.PagoRedcompra" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Persona" EntityType="LasTacasModel.Store.Persona" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Prepago" EntityType="LasTacasModel.Store.Prepago" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ComprasDetalle" EntityType="LasTacasModel.Store.ComprasDetalle" store:Type="Views" store:Schema="dbo" store:Name="ComprasDetalle">
+            <DefiningQuery>SELECT 
+      [ComprasDetalle].[id] AS [id], 
+      [ComprasDetalle].[fecha] AS [fecha], 
+      [ComprasDetalle].[rut] AS [rut], 
+      [ComprasDetalle].[apellido] AS [apellido], 
+      [ComprasDetalle].[nombre] AS [nombre], 
+      [ComprasDetalle].[email] AS [email], 
+      [ComprasDetalle].[fechanacimiento] AS [fechanacimiento], 
+      [ComprasDetalle].[total] AS [total]
+      FROM [dbo].[ComprasDetalle] AS [ComprasDetalle]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ComprasDiaria" EntityType="LasTacasModel.Store.ComprasDiaria" store:Type="Views" store:Schema="dbo" store:Name="ComprasDiaria">
+            <DefiningQuery>SELECT 
+      [ComprasDiaria].[Dia] AS [Dia], 
+      [ComprasDiaria].[Efectivo] AS [Efectivo], 
+      [ComprasDiaria].[RedCompra] AS [RedCompra], 
+      [ComprasDiaria].[PrePago] AS [PrePago], 
+      [ComprasDiaria].[Num] AS [Num], 
+      [ComprasDiaria].[Total] AS [Total]
+      FROM [dbo].[ComprasDiaria] AS [ComprasDiaria]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ItemCompraDetalle" EntityType="LasTacasModel.Store.ItemCompraDetalle" store:Type="Views" store:Schema="dbo" store:Name="ItemCompraDetalle">
+            <DefiningQuery>SELECT 
+      [ItemCompraDetalle].[CompraID] AS [CompraID], 
+      [ItemCompraDetalle].[FechaCompra] AS [FechaCompra], 
+      [ItemCompraDetalle].[Item] AS [Item], 
+      [ItemCompraDetalle].[ValorItemUnitario] AS [ValorItemUnitario], 
+      [ItemCompraDetalle].[Cantidad] AS [Cantidad], 
+      [ItemCompraDetalle].[ValorItemTotal] AS [ValorItemTotal]
+      FROM [dbo].[ItemCompraDetalle] AS [ItemCompraDetalle]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ItemCompraDiaria" EntityType="LasTacasModel.Store.ItemCompraDiaria" store:Type="Views" store:Schema="dbo" store:Name="ItemCompraDiaria">
+            <DefiningQuery>SELECT 
+      [ItemCompraDiaria].[Dia] AS [Dia], 
+      [ItemCompraDiaria].[Item] AS [Item], 
+      [ItemCompraDiaria].[Num] AS [Num], 
+      [ItemCompraDiaria].[Total] AS [Total]
+      FROM [dbo].[ItemCompraDiaria] AS [ItemCompraDiaria]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Compra_Persona" Association="LasTacasModel.Store.FK_Compra_Persona">
             <End Role="Persona" EntitySet="Persona" />
             <End Role="Compra" EntitySet="Compra" />
@@ -49,7 +89,7 @@
           </Key>
           <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Persona" Type="int" Nullable="false" />
-          <Property Name="Total" Type="bigint" Nullable="false" />
+          <Property Name="Total" Type="int" Nullable="false" />
           <Property Name="Fecha" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Item">
@@ -97,6 +137,7 @@
           <Property Name="Tipo" Type="char" Nullable="false" MaxLength="1" />
           <Property Name="Transaccion" Type="int" Nullable="false" />
           <Property Name="Autorizacion" Type="int" Nullable="false" />
+          <Property Name="Valor" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Persona">
           <Key>
@@ -116,6 +157,73 @@
           </Key>
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Saldo" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'LasTacas.dbo.ComprasDetalle' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="ComprasDetalle">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="fecha" />
+            <PropertyRef Name="rut" />
+            <PropertyRef Name="apellido" />
+            <PropertyRef Name="nombre" />
+            <PropertyRef Name="total" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="rut" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="apellido" Type="varchar(max)" Nullable="false" />
+          <Property Name="nombre" Type="varchar(max)" Nullable="false" />
+          <Property Name="email" Type="varchar(max)" />
+          <Property Name="fechanacimiento" Type="smalldatetime" />
+          <Property Name="total" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'LasTacas.dbo.ComprasDiaria' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="ComprasDiaria">
+          <Key>
+            <PropertyRef Name="Efectivo" />
+            <PropertyRef Name="RedCompra" />
+            <PropertyRef Name="PrePago" />
+          </Key>
+          <Property Name="Dia" Type="datetime" />
+          <Property Name="Efectivo" Type="int" Nullable="false" />
+          <Property Name="RedCompra" Type="int" Nullable="false" />
+          <Property Name="PrePago" Type="int" Nullable="false" />
+          <Property Name="Num" Type="int" />
+          <Property Name="Total" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'LasTacas.dbo.ItemCompraDetalle' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="ItemCompraDetalle">
+          <Key>
+            <PropertyRef Name="CompraID" />
+            <PropertyRef Name="FechaCompra" />
+            <PropertyRef Name="Item" />
+            <PropertyRef Name="ValorItemUnitario" />
+            <PropertyRef Name="Cantidad" />
+          </Key>
+          <Property Name="CompraID" Type="bigint" Nullable="false" />
+          <Property Name="FechaCompra" Type="datetime" Nullable="false" />
+          <Property Name="Item" Type="varchar(max)" Nullable="false" />
+          <Property Name="ValorItemUnitario" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="tinyint" Nullable="false" />
+          <Property Name="ValorItemTotal" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'LasTacas.dbo.ItemCompraDiaria' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="ItemCompraDiaria">
+          <Key>
+            <PropertyRef Name="Item" />
+          </Key>
+          <Property Name="Dia" Type="datetime" />
+          <Property Name="Item" Type="varchar(max)" Nullable="false" />
+          <Property Name="Num" Type="int" />
+          <Property Name="Total" Type="int" />
         </EntityType>
         <Association Name="FK_Compra_Persona">
           <End Role="Persona" Type="LasTacasModel.Store.Persona" Multiplicity="1" />
@@ -208,48 +316,52 @@
         <EntityContainer Name="DB" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Compras" EntityType="LasTacasModel.Compra" />
           <EntitySet Name="Items" EntityType="LasTacasModel.Item" />
-          <EntitySet Name="ItemCompras" EntityType="LasTacasModel.ItemCompra" />
-          <EntitySet Name="PagoEfectivoes" EntityType="LasTacasModel.PagoEfectivo" />
-          <EntitySet Name="PagoPrepagoes" EntityType="LasTacasModel.PagoPrepago" />
-          <EntitySet Name="PagoRedcompras" EntityType="LasTacasModel.PagoRedcompra" />
+          <EntitySet Name="ItemsCompra" EntityType="LasTacasModel.ItemCompra" />
+          <EntitySet Name="PagosEfectivo" EntityType="LasTacasModel.PagoEfectivo" />
+          <EntitySet Name="PagosPrepago" EntityType="LasTacasModel.PagoPrepago" />
+          <EntitySet Name="PagosRedcompra" EntityType="LasTacasModel.PagoRedcompra" />
           <EntitySet Name="Personas" EntityType="LasTacasModel.Persona" />
-          <EntitySet Name="Prepagoes" EntityType="LasTacasModel.Prepago" />
+          <EntitySet Name="Prepagos" EntityType="LasTacasModel.Prepago" />
           <AssociationSet Name="FK_Compra_Persona" Association="LasTacasModel.FK_Compra_Persona">
             <End Role="Persona" EntitySet="Personas" />
             <End Role="Compra" EntitySet="Compras" />
           </AssociationSet>
           <AssociationSet Name="FK_ItemCompra_Compra" Association="LasTacasModel.FK_ItemCompra_Compra">
             <End Role="Compra" EntitySet="Compras" />
-            <End Role="ItemCompra" EntitySet="ItemCompras" />
+            <End Role="ItemCompra" EntitySet="ItemsCompra" />
           </AssociationSet>
           <AssociationSet Name="FK_PagoEfectivo_Compra" Association="LasTacasModel.FK_PagoEfectivo_Compra">
             <End Role="Compra" EntitySet="Compras" />
-            <End Role="PagoEfectivo" EntitySet="PagoEfectivoes" />
+            <End Role="PagoEfectivo" EntitySet="PagosEfectivo" />
           </AssociationSet>
           <AssociationSet Name="FK_PagoPrepago_Compra" Association="LasTacasModel.FK_PagoPrepago_Compra">
             <End Role="Compra" EntitySet="Compras" />
-            <End Role="PagoPrepago" EntitySet="PagoPrepagoes" />
+            <End Role="PagoPrepago" EntitySet="PagosPrepago" />
           </AssociationSet>
           <AssociationSet Name="FK_PagoRedcompra_Compra" Association="LasTacasModel.FK_PagoRedcompra_Compra">
             <End Role="Compra" EntitySet="Compras" />
-            <End Role="PagoRedcompra" EntitySet="PagoRedcompras" />
+            <End Role="PagoRedcompra" EntitySet="PagosRedcompra" />
           </AssociationSet>
           <AssociationSet Name="FK_ItemCompra_Item" Association="LasTacasModel.FK_ItemCompra_Item">
             <End Role="Item" EntitySet="Items" />
-            <End Role="ItemCompra" EntitySet="ItemCompras" />
+            <End Role="ItemCompra" EntitySet="ItemsCompra" />
           </AssociationSet>
           <AssociationSet Name="FK_PagoPrepago_Prepago" Association="LasTacasModel.FK_PagoPrepago_Prepago">
-            <End Role="Prepago" EntitySet="Prepagoes" />
-            <End Role="PagoPrepago" EntitySet="PagoPrepagoes" />
+            <End Role="Prepago" EntitySet="Prepagos" />
+            <End Role="PagoPrepago" EntitySet="PagosPrepago" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="ComprasDetalle" EntityType="LasTacasModel.ComprasDetalle" />
+          <EntitySet Name="ComprasDiaria" EntityType="LasTacasModel.ComprasDiaria" />
+          <EntitySet Name="ItemCompraDetalle" EntityType="LasTacasModel.ItemCompraDetalle" />
+          <EntitySet Name="ItemCompraDiaria" EntityType="LasTacasModel.ItemCompraDiaria" />
+          </EntityContainer>
         <EntityType Name="Compra">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PersonaID" Type="Int32" Nullable="false" />
-          <Property Name="Total" Type="Int64" Nullable="false" />
+          <Property Name="Total" Type="Int32" Nullable="false" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" a:SetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Persona" Relationship="LasTacasModel.FK_Compra_Persona" FromRole="Compra" ToRole="Persona" />
           <NavigationProperty Name="Items" Relationship="LasTacasModel.FK_ItemCompra_Compra" FromRole="Compra" ToRole="ItemCompra" />
@@ -309,6 +421,7 @@
           <Property Name="Transaccion" Type="Int32" Nullable="false" />
           <Property Name="Autorizacion" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Compra" Relationship="LasTacasModel.FK_PagoRedcompra_Compra" FromRole="PagoRedcompra" ToRole="Compra" />
+          <Property Type="Int32" Name="Valor" Nullable="false" />
         </EntityType>
         <EntityType Name="Persona">
           <Key>
@@ -415,7 +528,62 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="ComprasDetalle">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="fecha" />
+            <PropertyRef Name="rut" />
+            <PropertyRef Name="apellido" />
+            <PropertyRef Name="nombre" />
+            <PropertyRef Name="total" />
+          </Key>
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="DateTime" Name="fecha" Nullable="false" />
+          <Property Type="String" Name="rut" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="apellido" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="email" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="fechanacimiento" />
+          <Property Type="Int32" Name="total" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ComprasDiaria">
+          <Key>
+            <PropertyRef Name="Efectivo" />
+            <PropertyRef Name="RedCompra" />
+            <PropertyRef Name="PrePago" />
+          </Key>
+          <Property Type="DateTime" Name="Dia" />
+          <Property Type="Int32" Name="Efectivo" Nullable="false" />
+          <Property Type="Int32" Name="RedCompra" Nullable="false" />
+          <Property Type="Int32" Name="PrePago" Nullable="false" />
+          <Property Type="Int32" Name="Num" />
+          <Property Type="Int32" Name="Total" />
+        </EntityType>
+        <EntityType Name="ItemCompraDetalle">
+          <Key>
+            <PropertyRef Name="CompraID" />
+            <PropertyRef Name="FechaCompra" />
+            <PropertyRef Name="Item" />
+            <PropertyRef Name="ValorItemUnitario" />
+            <PropertyRef Name="Cantidad" />
+          </Key>
+          <Property Type="Int64" Name="CompraID" Nullable="false" />
+          <Property Type="DateTime" Name="FechaCompra" Nullable="false" />
+          <Property Type="String" Name="Item" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ValorItemUnitario" Nullable="false" />
+          <Property Type="Byte" Name="Cantidad" Nullable="false" />
+          <Property Type="Int32" Name="ValorItemTotal" />
+        </EntityType>
+        <EntityType Name="ItemCompraDiaria">
+          <Key>
+            <PropertyRef Name="Item" />
+          </Key>
+          <Property Type="DateTime" Name="Dia" />
+          <Property Type="String" Name="Item" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Num" />
+          <Property Type="Int32" Name="Total" />
+        </EntityType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -441,7 +609,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ItemCompras">
+          <EntitySetMapping Name="ItemsCompra">
             <EntityTypeMapping TypeName="LasTacasModel.ItemCompra">
               <MappingFragment StoreEntitySet="ItemCompra">
                 <ScalarProperty Name="CompraID" ColumnName="Compra" />
@@ -451,7 +619,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PagoEfectivoes">
+          <EntitySetMapping Name="PagosEfectivo">
             <EntityTypeMapping TypeName="LasTacasModel.PagoEfectivo">
               <MappingFragment StoreEntitySet="PagoEfectivo">
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -460,7 +628,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PagoPrepagoes">
+          <EntitySetMapping Name="PagosPrepago">
             <EntityTypeMapping TypeName="LasTacasModel.PagoPrepago">
               <MappingFragment StoreEntitySet="PagoPrepago">
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -470,9 +638,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PagoRedcompras">
+          <EntitySetMapping Name="PagosRedcompra">
             <EntityTypeMapping TypeName="LasTacasModel.PagoRedcompra">
               <MappingFragment StoreEntitySet="PagoRedcompra">
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CompraID" ColumnName="Compra" />
                 <ScalarProperty Name="Tipo" ColumnName="Tipo" />
@@ -494,7 +663,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Prepagoes">
+          <EntitySetMapping Name="Prepagos">
             <EntityTypeMapping TypeName="LasTacasModel.Prepago">
               <MappingFragment StoreEntitySet="Prepago">
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -502,7 +671,55 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="ComprasDetalle">
+            <EntityTypeMapping TypeName="LasTacasModel.ComprasDetalle">
+              <MappingFragment StoreEntitySet="ComprasDetalle">
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="fechanacimiento" ColumnName="fechanacimiento" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="rut" ColumnName="rut" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComprasDiaria">
+            <EntityTypeMapping TypeName="LasTacasModel.ComprasDiaria">
+              <MappingFragment StoreEntitySet="ComprasDiaria">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="PrePago" ColumnName="PrePago" />
+                <ScalarProperty Name="RedCompra" ColumnName="RedCompra" />
+                <ScalarProperty Name="Efectivo" ColumnName="Efectivo" />
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemCompraDetalle">
+            <EntityTypeMapping TypeName="LasTacasModel.ItemCompraDetalle">
+              <MappingFragment StoreEntitySet="ItemCompraDetalle">
+                <ScalarProperty Name="ValorItemTotal" ColumnName="ValorItemTotal" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="ValorItemUnitario" ColumnName="ValorItemUnitario" />
+                <ScalarProperty Name="Item" ColumnName="Item" />
+                <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />
+                <ScalarProperty Name="CompraID" ColumnName="CompraID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemCompraDiaria">
+            <EntityTypeMapping TypeName="LasTacasModel.ItemCompraDiaria">
+              <MappingFragment StoreEntitySet="ItemCompraDiaria">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Item" ColumnName="Item" />
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -517,7 +734,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="False" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
@@ -562,6 +779,10 @@
           <ConnectorPoint PointX="3.9375" PointY="11" />
           <ConnectorPoint PointX="3.9375" PointY="10.5460009765625" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="LasTacasModel.ComprasDetalle" Width="1.5" PointX="0.75" PointY="0.75" Height="2.2496956380208388" />
+        <EntityTypeShape EntityType="LasTacasModel.ComprasDiaria" Width="1.5" PointX="2.75" PointY="0.75" Height="1.9210009765625031" />
+        <EntityTypeShape EntityType="LasTacasModel.ItemCompraDetalle" Width="1.5" PointX="4.75" PointY="0.75" Height="1.9210009765625031" />
+        <EntityTypeShape EntityType="LasTacasModel.ItemCompraDiaria" Width="1.5" PointX="6.75" PointY="0.75" Height="1.5923063151041674" />
       </Diagram>
     </Diagrams>
   </Designer>

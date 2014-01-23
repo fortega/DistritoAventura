@@ -112,66 +112,66 @@ namespace POS
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<ItemCompra> ItemCompras
+        public ObjectSet<ItemCompra> ItemsCompra
         {
             get
             {
-                if ((_ItemCompras == null))
+                if ((_ItemsCompra == null))
                 {
-                    _ItemCompras = base.CreateObjectSet<ItemCompra>("ItemCompras");
+                    _ItemsCompra = base.CreateObjectSet<ItemCompra>("ItemsCompra");
                 }
-                return _ItemCompras;
+                return _ItemsCompra;
             }
         }
-        private ObjectSet<ItemCompra> _ItemCompras;
+        private ObjectSet<ItemCompra> _ItemsCompra;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<PagoEfectivo> PagoEfectivoes
+        public ObjectSet<PagoEfectivo> PagosEfectivo
         {
             get
             {
-                if ((_PagoEfectivoes == null))
+                if ((_PagosEfectivo == null))
                 {
-                    _PagoEfectivoes = base.CreateObjectSet<PagoEfectivo>("PagoEfectivoes");
+                    _PagosEfectivo = base.CreateObjectSet<PagoEfectivo>("PagosEfectivo");
                 }
-                return _PagoEfectivoes;
+                return _PagosEfectivo;
             }
         }
-        private ObjectSet<PagoEfectivo> _PagoEfectivoes;
+        private ObjectSet<PagoEfectivo> _PagosEfectivo;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<PagoPrepago> PagoPrepagoes
+        public ObjectSet<PagoPrepago> PagosPrepago
         {
             get
             {
-                if ((_PagoPrepagoes == null))
+                if ((_PagosPrepago == null))
                 {
-                    _PagoPrepagoes = base.CreateObjectSet<PagoPrepago>("PagoPrepagoes");
+                    _PagosPrepago = base.CreateObjectSet<PagoPrepago>("PagosPrepago");
                 }
-                return _PagoPrepagoes;
+                return _PagosPrepago;
             }
         }
-        private ObjectSet<PagoPrepago> _PagoPrepagoes;
+        private ObjectSet<PagoPrepago> _PagosPrepago;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<PagoRedcompra> PagoRedcompras
+        public ObjectSet<PagoRedcompra> PagosRedcompra
         {
             get
             {
-                if ((_PagoRedcompras == null))
+                if ((_PagosRedcompra == null))
                 {
-                    _PagoRedcompras = base.CreateObjectSet<PagoRedcompra>("PagoRedcompras");
+                    _PagosRedcompra = base.CreateObjectSet<PagoRedcompra>("PagosRedcompra");
                 }
-                return _PagoRedcompras;
+                return _PagosRedcompra;
             }
         }
-        private ObjectSet<PagoRedcompra> _PagoRedcompras;
+        private ObjectSet<PagoRedcompra> _PagosRedcompra;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -192,18 +192,82 @@ namespace POS
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Prepago> Prepagoes
+        public ObjectSet<Prepago> Prepagos
         {
             get
             {
-                if ((_Prepagoes == null))
+                if ((_Prepagos == null))
                 {
-                    _Prepagoes = base.CreateObjectSet<Prepago>("Prepagoes");
+                    _Prepagos = base.CreateObjectSet<Prepago>("Prepagos");
                 }
-                return _Prepagoes;
+                return _Prepagos;
             }
         }
-        private ObjectSet<Prepago> _Prepagoes;
+        private ObjectSet<Prepago> _Prepagos;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ComprasDetalle> ComprasDetalle
+        {
+            get
+            {
+                if ((_ComprasDetalle == null))
+                {
+                    _ComprasDetalle = base.CreateObjectSet<ComprasDetalle>("ComprasDetalle");
+                }
+                return _ComprasDetalle;
+            }
+        }
+        private ObjectSet<ComprasDetalle> _ComprasDetalle;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ComprasDiaria> ComprasDiaria
+        {
+            get
+            {
+                if ((_ComprasDiaria == null))
+                {
+                    _ComprasDiaria = base.CreateObjectSet<ComprasDiaria>("ComprasDiaria");
+                }
+                return _ComprasDiaria;
+            }
+        }
+        private ObjectSet<ComprasDiaria> _ComprasDiaria;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ItemCompraDetalle> ItemCompraDetalle
+        {
+            get
+            {
+                if ((_ItemCompraDetalle == null))
+                {
+                    _ItemCompraDetalle = base.CreateObjectSet<ItemCompraDetalle>("ItemCompraDetalle");
+                }
+                return _ItemCompraDetalle;
+            }
+        }
+        private ObjectSet<ItemCompraDetalle> _ItemCompraDetalle;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ItemCompraDiaria> ItemCompraDiaria
+        {
+            get
+            {
+                if ((_ItemCompraDiaria == null))
+                {
+                    _ItemCompraDiaria = base.CreateObjectSet<ItemCompraDiaria>("ItemCompraDiaria");
+                }
+                return _ItemCompraDiaria;
+            }
+        }
+        private ObjectSet<ItemCompraDiaria> _ItemCompraDiaria;
 
         #endregion
 
@@ -226,35 +290,35 @@ namespace POS
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the ItemCompras EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the ItemsCompra EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToItemCompras(ItemCompra itemCompra)
+        public void AddToItemsCompra(ItemCompra itemCompra)
         {
-            base.AddObject("ItemCompras", itemCompra);
+            base.AddObject("ItemsCompra", itemCompra);
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the PagoEfectivoes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the PagosEfectivo EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToPagoEfectivoes(PagoEfectivo pagoEfectivo)
+        public void AddToPagosEfectivo(PagoEfectivo pagoEfectivo)
         {
-            base.AddObject("PagoEfectivoes", pagoEfectivo);
+            base.AddObject("PagosEfectivo", pagoEfectivo);
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the PagoPrepagoes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the PagosPrepago EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToPagoPrepagoes(PagoPrepago pagoPrepago)
+        public void AddToPagosPrepago(PagoPrepago pagoPrepago)
         {
-            base.AddObject("PagoPrepagoes", pagoPrepago);
+            base.AddObject("PagosPrepago", pagoPrepago);
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the PagoRedcompras EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the PagosRedcompra EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToPagoRedcompras(PagoRedcompra pagoRedcompra)
+        public void AddToPagosRedcompra(PagoRedcompra pagoRedcompra)
         {
-            base.AddObject("PagoRedcompras", pagoRedcompra);
+            base.AddObject("PagosRedcompra", pagoRedcompra);
         }
     
         /// <summary>
@@ -266,11 +330,43 @@ namespace POS
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Prepagoes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the Prepagos EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToPrepagoes(Prepago prepago)
+        public void AddToPrepagos(Prepago prepago)
         {
-            base.AddObject("Prepagoes", prepago);
+            base.AddObject("Prepagos", prepago);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ComprasDetalle EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToComprasDetalle(ComprasDetalle comprasDetalle)
+        {
+            base.AddObject("ComprasDetalle", comprasDetalle);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ComprasDiaria EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToComprasDiaria(ComprasDiaria comprasDiaria)
+        {
+            base.AddObject("ComprasDiaria", comprasDiaria);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ItemCompraDetalle EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToItemCompraDetalle(ItemCompraDetalle itemCompraDetalle)
+        {
+            base.AddObject("ItemCompraDetalle", itemCompraDetalle);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ItemCompraDiaria EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToItemCompraDiaria(ItemCompraDiaria itemCompraDiaria)
+        {
+            base.AddObject("ItemCompraDiaria", itemCompraDiaria);
         }
 
         #endregion
@@ -298,7 +394,7 @@ namespace POS
         /// <param name="personaID">Initial value of the PersonaID property.</param>
         /// <param name="total">Initial value of the Total property.</param>
         /// <param name="fecha">Initial value of the Fecha property.</param>
-        public static Compra CreateCompra(global::System.Int64 id, global::System.Int32 personaID, global::System.Int64 total, global::System.DateTime fecha)
+        public static Compra CreateCompra(global::System.Int64 id, global::System.Int32 personaID, global::System.Int32 total, global::System.DateTime fecha)
         {
             Compra compra = new Compra();
             compra.ID = id;
@@ -368,7 +464,7 @@ namespace POS
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int64 Total
+        public global::System.Int32 Total
         {
             get
             {
@@ -383,8 +479,8 @@ namespace POS
                 OnTotalChanged();
             }
         }
-        private global::System.Int64 _Total;
-        partial void OnTotalChanging(global::System.Int64 value);
+        private global::System.Int32 _Total;
+        partial void OnTotalChanging(global::System.Int32 value);
         partial void OnTotalChanged();
     
         /// <summary>
@@ -544,6 +640,443 @@ namespace POS
 
         #endregion
 
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="LasTacasModel", Name="ComprasDetalle")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ComprasDetalle : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ComprasDetalle object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="fecha">Initial value of the fecha property.</param>
+        /// <param name="rut">Initial value of the rut property.</param>
+        /// <param name="apellido">Initial value of the apellido property.</param>
+        /// <param name="nombre">Initial value of the nombre property.</param>
+        /// <param name="total">Initial value of the total property.</param>
+        public static ComprasDetalle CreateComprasDetalle(global::System.Int64 id, global::System.DateTime fecha, global::System.String rut, global::System.String apellido, global::System.String nombre, global::System.Int32 total)
+        {
+            ComprasDetalle comprasDetalle = new ComprasDetalle();
+            comprasDetalle.id = id;
+            comprasDetalle.fecha = fecha;
+            comprasDetalle.rut = rut;
+            comprasDetalle.apellido = apellido;
+            comprasDetalle.nombre = nombre;
+            comprasDetalle.total = total;
+            return comprasDetalle;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int64 _id;
+        partial void OnidChanging(global::System.Int64 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime fecha
+        {
+            get
+            {
+                return _fecha;
+            }
+            set
+            {
+                if (_fecha != value)
+                {
+                    OnfechaChanging(value);
+                    ReportPropertyChanging("fecha");
+                    _fecha = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("fecha");
+                    OnfechaChanged();
+                }
+            }
+        }
+        private global::System.DateTime _fecha;
+        partial void OnfechaChanging(global::System.DateTime value);
+        partial void OnfechaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String rut
+        {
+            get
+            {
+                return _rut;
+            }
+            set
+            {
+                if (_rut != value)
+                {
+                    OnrutChanging(value);
+                    ReportPropertyChanging("rut");
+                    _rut = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("rut");
+                    OnrutChanged();
+                }
+            }
+        }
+        private global::System.String _rut;
+        partial void OnrutChanging(global::System.String value);
+        partial void OnrutChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String apellido
+        {
+            get
+            {
+                return _apellido;
+            }
+            set
+            {
+                if (_apellido != value)
+                {
+                    OnapellidoChanging(value);
+                    ReportPropertyChanging("apellido");
+                    _apellido = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("apellido");
+                    OnapellidoChanged();
+                }
+            }
+        }
+        private global::System.String _apellido;
+        partial void OnapellidoChanging(global::System.String value);
+        partial void OnapellidoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String nombre
+        {
+            get
+            {
+                return _nombre;
+            }
+            set
+            {
+                if (_nombre != value)
+                {
+                    OnnombreChanging(value);
+                    ReportPropertyChanging("nombre");
+                    _nombre = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("nombre");
+                    OnnombreChanged();
+                }
+            }
+        }
+        private global::System.String _nombre;
+        partial void OnnombreChanging(global::System.String value);
+        partial void OnnombreChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String email
+        {
+            get
+            {
+                return _email;
+            }
+            set
+            {
+                OnemailChanging(value);
+                ReportPropertyChanging("email");
+                _email = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("email");
+                OnemailChanged();
+            }
+        }
+        private global::System.String _email;
+        partial void OnemailChanging(global::System.String value);
+        partial void OnemailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> fechanacimiento
+        {
+            get
+            {
+                return _fechanacimiento;
+            }
+            set
+            {
+                OnfechanacimientoChanging(value);
+                ReportPropertyChanging("fechanacimiento");
+                _fechanacimiento = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("fechanacimiento");
+                OnfechanacimientoChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _fechanacimiento;
+        partial void OnfechanacimientoChanging(Nullable<global::System.DateTime> value);
+        partial void OnfechanacimientoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 total
+        {
+            get
+            {
+                return _total;
+            }
+            set
+            {
+                if (_total != value)
+                {
+                    OntotalChanging(value);
+                    ReportPropertyChanging("total");
+                    _total = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("total");
+                    OntotalChanged();
+                }
+            }
+        }
+        private global::System.Int32 _total;
+        partial void OntotalChanging(global::System.Int32 value);
+        partial void OntotalChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="LasTacasModel", Name="ComprasDiaria")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ComprasDiaria : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ComprasDiaria object.
+        /// </summary>
+        /// <param name="efectivo">Initial value of the Efectivo property.</param>
+        /// <param name="redCompra">Initial value of the RedCompra property.</param>
+        /// <param name="prePago">Initial value of the PrePago property.</param>
+        public static ComprasDiaria CreateComprasDiaria(global::System.Int32 efectivo, global::System.Int32 redCompra, global::System.Int32 prePago)
+        {
+            ComprasDiaria comprasDiaria = new ComprasDiaria();
+            comprasDiaria.Efectivo = efectivo;
+            comprasDiaria.RedCompra = redCompra;
+            comprasDiaria.PrePago = prePago;
+            return comprasDiaria;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> Dia
+        {
+            get
+            {
+                return _Dia;
+            }
+            set
+            {
+                OnDiaChanging(value);
+                ReportPropertyChanging("Dia");
+                _Dia = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Dia");
+                OnDiaChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _Dia;
+        partial void OnDiaChanging(Nullable<global::System.DateTime> value);
+        partial void OnDiaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Efectivo
+        {
+            get
+            {
+                return _Efectivo;
+            }
+            set
+            {
+                if (_Efectivo != value)
+                {
+                    OnEfectivoChanging(value);
+                    ReportPropertyChanging("Efectivo");
+                    _Efectivo = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Efectivo");
+                    OnEfectivoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Efectivo;
+        partial void OnEfectivoChanging(global::System.Int32 value);
+        partial void OnEfectivoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 RedCompra
+        {
+            get
+            {
+                return _RedCompra;
+            }
+            set
+            {
+                if (_RedCompra != value)
+                {
+                    OnRedCompraChanging(value);
+                    ReportPropertyChanging("RedCompra");
+                    _RedCompra = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("RedCompra");
+                    OnRedCompraChanged();
+                }
+            }
+        }
+        private global::System.Int32 _RedCompra;
+        partial void OnRedCompraChanging(global::System.Int32 value);
+        partial void OnRedCompraChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 PrePago
+        {
+            get
+            {
+                return _PrePago;
+            }
+            set
+            {
+                if (_PrePago != value)
+                {
+                    OnPrePagoChanging(value);
+                    ReportPropertyChanging("PrePago");
+                    _PrePago = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("PrePago");
+                    OnPrePagoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _PrePago;
+        partial void OnPrePagoChanging(global::System.Int32 value);
+        partial void OnPrePagoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Num
+        {
+            get
+            {
+                return _Num;
+            }
+            set
+            {
+                OnNumChanging(value);
+                ReportPropertyChanging("Num");
+                _Num = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Num");
+                OnNumChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Num;
+        partial void OnNumChanging(Nullable<global::System.Int32> value);
+        partial void OnNumChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Total
+        {
+            get
+            {
+                return _Total;
+            }
+            set
+            {
+                OnTotalChanging(value);
+                ReportPropertyChanging("Total");
+                _Total = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Total");
+                OnTotalChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Total;
+        partial void OnTotalChanging(Nullable<global::System.Int32> value);
+        partial void OnTotalChanged();
+
+        #endregion
+
+    
     }
     
     /// <summary>
@@ -923,6 +1456,332 @@ namespace POS
 
         #endregion
 
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="LasTacasModel", Name="ItemCompraDetalle")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ItemCompraDetalle : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ItemCompraDetalle object.
+        /// </summary>
+        /// <param name="compraID">Initial value of the CompraID property.</param>
+        /// <param name="fechaCompra">Initial value of the FechaCompra property.</param>
+        /// <param name="item">Initial value of the Item property.</param>
+        /// <param name="valorItemUnitario">Initial value of the ValorItemUnitario property.</param>
+        /// <param name="cantidad">Initial value of the Cantidad property.</param>
+        public static ItemCompraDetalle CreateItemCompraDetalle(global::System.Int64 compraID, global::System.DateTime fechaCompra, global::System.String item, global::System.Int32 valorItemUnitario, global::System.Byte cantidad)
+        {
+            ItemCompraDetalle itemCompraDetalle = new ItemCompraDetalle();
+            itemCompraDetalle.CompraID = compraID;
+            itemCompraDetalle.FechaCompra = fechaCompra;
+            itemCompraDetalle.Item = item;
+            itemCompraDetalle.ValorItemUnitario = valorItemUnitario;
+            itemCompraDetalle.Cantidad = cantidad;
+            return itemCompraDetalle;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 CompraID
+        {
+            get
+            {
+                return _CompraID;
+            }
+            set
+            {
+                if (_CompraID != value)
+                {
+                    OnCompraIDChanging(value);
+                    ReportPropertyChanging("CompraID");
+                    _CompraID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("CompraID");
+                    OnCompraIDChanged();
+                }
+            }
+        }
+        private global::System.Int64 _CompraID;
+        partial void OnCompraIDChanging(global::System.Int64 value);
+        partial void OnCompraIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime FechaCompra
+        {
+            get
+            {
+                return _FechaCompra;
+            }
+            set
+            {
+                if (_FechaCompra != value)
+                {
+                    OnFechaCompraChanging(value);
+                    ReportPropertyChanging("FechaCompra");
+                    _FechaCompra = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("FechaCompra");
+                    OnFechaCompraChanged();
+                }
+            }
+        }
+        private global::System.DateTime _FechaCompra;
+        partial void OnFechaCompraChanging(global::System.DateTime value);
+        partial void OnFechaCompraChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Item
+        {
+            get
+            {
+                return _Item;
+            }
+            set
+            {
+                if (_Item != value)
+                {
+                    OnItemChanging(value);
+                    ReportPropertyChanging("Item");
+                    _Item = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("Item");
+                    OnItemChanged();
+                }
+            }
+        }
+        private global::System.String _Item;
+        partial void OnItemChanging(global::System.String value);
+        partial void OnItemChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ValorItemUnitario
+        {
+            get
+            {
+                return _ValorItemUnitario;
+            }
+            set
+            {
+                if (_ValorItemUnitario != value)
+                {
+                    OnValorItemUnitarioChanging(value);
+                    ReportPropertyChanging("ValorItemUnitario");
+                    _ValorItemUnitario = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ValorItemUnitario");
+                    OnValorItemUnitarioChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ValorItemUnitario;
+        partial void OnValorItemUnitarioChanging(global::System.Int32 value);
+        partial void OnValorItemUnitarioChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Byte Cantidad
+        {
+            get
+            {
+                return _Cantidad;
+            }
+            set
+            {
+                if (_Cantidad != value)
+                {
+                    OnCantidadChanging(value);
+                    ReportPropertyChanging("Cantidad");
+                    _Cantidad = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Cantidad");
+                    OnCantidadChanged();
+                }
+            }
+        }
+        private global::System.Byte _Cantidad;
+        partial void OnCantidadChanging(global::System.Byte value);
+        partial void OnCantidadChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ValorItemTotal
+        {
+            get
+            {
+                return _ValorItemTotal;
+            }
+            set
+            {
+                OnValorItemTotalChanging(value);
+                ReportPropertyChanging("ValorItemTotal");
+                _ValorItemTotal = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ValorItemTotal");
+                OnValorItemTotalChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ValorItemTotal;
+        partial void OnValorItemTotalChanging(Nullable<global::System.Int32> value);
+        partial void OnValorItemTotalChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="LasTacasModel", Name="ItemCompraDiaria")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ItemCompraDiaria : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ItemCompraDiaria object.
+        /// </summary>
+        /// <param name="item">Initial value of the Item property.</param>
+        public static ItemCompraDiaria CreateItemCompraDiaria(global::System.String item)
+        {
+            ItemCompraDiaria itemCompraDiaria = new ItemCompraDiaria();
+            itemCompraDiaria.Item = item;
+            return itemCompraDiaria;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> Dia
+        {
+            get
+            {
+                return _Dia;
+            }
+            set
+            {
+                OnDiaChanging(value);
+                ReportPropertyChanging("Dia");
+                _Dia = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Dia");
+                OnDiaChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _Dia;
+        partial void OnDiaChanging(Nullable<global::System.DateTime> value);
+        partial void OnDiaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Item
+        {
+            get
+            {
+                return _Item;
+            }
+            set
+            {
+                if (_Item != value)
+                {
+                    OnItemChanging(value);
+                    ReportPropertyChanging("Item");
+                    _Item = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("Item");
+                    OnItemChanged();
+                }
+            }
+        }
+        private global::System.String _Item;
+        partial void OnItemChanging(global::System.String value);
+        partial void OnItemChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Num
+        {
+            get
+            {
+                return _Num;
+            }
+            set
+            {
+                OnNumChanging(value);
+                ReportPropertyChanging("Num");
+                _Num = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Num");
+                OnNumChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Num;
+        partial void OnNumChanging(Nullable<global::System.Int32> value);
+        partial void OnNumChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Total
+        {
+            get
+            {
+                return _Total;
+            }
+            set
+            {
+                OnTotalChanging(value);
+                ReportPropertyChanging("Total");
+                _Total = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Total");
+                OnTotalChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Total;
+        partial void OnTotalChanging(Nullable<global::System.Int32> value);
+        partial void OnTotalChanged();
+
+        #endregion
+
+    
     }
     
     /// <summary>
@@ -1309,7 +2168,8 @@ namespace POS
         /// <param name="tipo">Initial value of the Tipo property.</param>
         /// <param name="transaccion">Initial value of the Transaccion property.</param>
         /// <param name="autorizacion">Initial value of the Autorizacion property.</param>
-        public static PagoRedcompra CreatePagoRedcompra(global::System.Int32 id, global::System.Int64 compraID, global::System.String tipo, global::System.Int32 transaccion, global::System.Int32 autorizacion)
+        /// <param name="valor">Initial value of the Valor property.</param>
+        public static PagoRedcompra CreatePagoRedcompra(global::System.Int32 id, global::System.Int64 compraID, global::System.String tipo, global::System.Int32 transaccion, global::System.Int32 autorizacion, global::System.Int32 valor)
         {
             PagoRedcompra pagoRedcompra = new PagoRedcompra();
             pagoRedcompra.ID = id;
@@ -1317,6 +2177,7 @@ namespace POS
             pagoRedcompra.Tipo = tipo;
             pagoRedcompra.Transaccion = transaccion;
             pagoRedcompra.Autorizacion = autorizacion;
+            pagoRedcompra.Valor = valor;
             return pagoRedcompra;
         }
 
@@ -1446,6 +2307,30 @@ namespace POS
         private global::System.Int32 _Autorizacion;
         partial void OnAutorizacionChanging(global::System.Int32 value);
         partial void OnAutorizacionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Valor
+        {
+            get
+            {
+                return _Valor;
+            }
+            set
+            {
+                OnValorChanging(value);
+                ReportPropertyChanging("Valor");
+                _Valor = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Valor");
+                OnValorChanged();
+            }
+        }
+        private global::System.Int32 _Valor;
+        partial void OnValorChanging(global::System.Int32 value);
+        partial void OnValorChanged();
 
         #endregion
 

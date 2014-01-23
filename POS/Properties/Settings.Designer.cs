@@ -34,5 +34,209 @@ namespace POS.Properties {
                 this["PreguntaCrearPersona"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("$#,0")]
+        public string FormatoPlata {
+            get {
+                return ((string)(this["FormatoPlata"]));
+            }
+            set {
+                this["FormatoPlata"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public double MaxMin {
+            get {
+                return ((double)(this["MaxMin"]));
+            }
+            set {
+                this["MaxMin"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Verdana")]
+        public string CompraFontFamily {
+            get {
+                return ((string)(this["CompraFontFamily"]));
+            }
+            set {
+                this["CompraFontFamily"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        public float CompraFontSize {
+            get {
+                return ((float)(this["CompraFontSize"]));
+            }
+            set {
+                this["CompraFontSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public float CompraLogoProp {
+            get {
+                return ((float)(this["CompraLogoProp"]));
+            }
+            set {
+                this["CompraLogoProp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.4")]
+        public float CompraQrProp {
+            get {
+                return ((float)(this["CompraQrProp"]));
+            }
+            set {
+                this["CompraQrProp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Verdana")]
+        public string CompraGraciasFamily {
+            get {
+                return ((string)(this["CompraGraciasFamily"]));
+            }
+            set {
+                this["CompraGraciasFamily"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("16")]
+        public float CompraGraciasSize {
+            get {
+                return ((float)(this["CompraGraciasSize"]));
+            }
+            set {
+                this["CompraGraciasSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Gracias por su visita")]
+        public string CompraGraciasText {
+            get {
+                return ((string)(this["CompraGraciasText"]));
+            }
+            set {
+                this["CompraGraciasText"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Este es el texto del contrato")]
+        public string ContratoTexto {
+            get {
+                return ((string)(this["ContratoTexto"]));
+            }
+            set {
+                this["ContratoTexto"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Verdana")]
+        public string ContratoFamily {
+            get {
+                return ((string)(this["ContratoFamily"]));
+            }
+            set {
+                this["ContratoFamily"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        public float ContratoSize {
+            get {
+                return ((float)(this["ContratoSize"]));
+            }
+            set {
+                this["ContratoSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool PersonaPrintDialog {
+            get {
+                return ((bool)(this["PersonaPrintDialog"]));
+            }
+            set {
+                this["PersonaPrintDialog"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CompraPrintDialog {
+            get {
+                return ((bool)(this["CompraPrintDialog"]));
+            }
+            set {
+                this["CompraPrintDialog"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string GmailUser {
+            get {
+                return ((string)(this["GmailUser"]));
+            }
+            set {
+                this["GmailUser"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string GmailPass {
+            get {
+                return ((string)(this["GmailPass"]));
+            }
+            set {
+                this["GmailPass"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("avelinosalas@gmail.com,felipeortegabustamante@gmail.com")]
+        public string GmailTo {
+            get {
+                return ((string)(this["GmailTo"]));
+            }
+            set {
+                this["GmailTo"] = value;
+            }
+        }
     }
 }

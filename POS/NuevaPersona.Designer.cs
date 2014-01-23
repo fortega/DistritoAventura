@@ -199,7 +199,7 @@
             this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(600, 200);
             this.Controls.Add(this.tl);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "NuevaPersona";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

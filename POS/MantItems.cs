@@ -32,18 +32,18 @@ namespace POS
                 DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
+        private Item ItemSeleccionado
+        {
+            get { return (Item)dg.SelectedRows[0].DataBoundItem; }
+        }
+
         private void dg_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (dg.SelectedRows.Count > 0)
+            ItemForm form = new ItemForm(ItemSeleccionado);
+            if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                Item i = (Item)dg.SelectedRows[0].DataBoundItem;
-
-                ItemForm form = new ItemForm(i);
-                if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    edit = true;
-                    Cargar();
-                }
+                edit = true;
+                Cargar();
             }
         }
 
@@ -56,6 +56,11 @@ namespace POS
                 edit = true;
                 Cargar();
             }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            dg_MouseDoubleClick(null, null);
         }
     }
 }

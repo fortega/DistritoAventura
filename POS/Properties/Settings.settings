@@ -5,5 +5,56 @@
     <Setting Name="PreguntaCrearPersona" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="FormatoPlata" Type="System.String" Scope="User">
+      <Value Profile="(Default)">$#,0</Value>
+    </Setting>
+    <Setting Name="MaxMin" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">30</Value>
+    </Setting>
+    <Setting Name="CompraFontFamily" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Verdana</Value>
+    </Setting>
+    <Setting Name="CompraFontSize" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">8</Value>
+    </Setting>
+    <Setting Name="CompraLogoProp" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="CompraQrProp" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">0.4</Value>
+    </Setting>
+    <Setting Name="CompraGraciasFamily" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Verdana</Value>
+    </Setting>
+    <Setting Name="CompraGraciasSize" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">16</Value>
+    </Setting>
+    <Setting Name="CompraGraciasText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Gracias por su visita</Value>
+    </Setting>
+    <Setting Name="ContratoTexto" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Este es el texto del contrato</Value>
+    </Setting>
+    <Setting Name="ContratoFamily" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Verdana</Value>
+    </Setting>
+    <Setting Name="ContratoSize" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">8</Value>
+    </Setting>
+    <Setting Name="PersonaPrintDialog" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="CompraPrintDialog" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="GmailUser" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="GmailPass" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="GmailTo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">avelinosalas@gmail.com,felipeortegabustamante@gmail.com</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

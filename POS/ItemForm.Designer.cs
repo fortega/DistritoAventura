@@ -155,10 +155,11 @@
             this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(450, 150);
             this.Controls.Add(this.tl);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ItemForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "ItemForm";
+            this.Text = "Items";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ItemForm_FormClosing);
             this.tl.ResumeLayout(false);
             this.tl.PerformLayout();
