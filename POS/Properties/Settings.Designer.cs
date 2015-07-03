@@ -145,7 +145,19 @@ namespace POS.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Este es el texto del contrato")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"En La Serena a [fecha]
+Nombre: [nombre] [apellido]
+Cedula de identidad N°: [rut]
+Correo Electrónico: [email]
+
+1.- Ser mayor de edad y contar con las aptitudes físicas y de salud necesarias para jugar en el Paintball/MTB/Muro de escalada, existente en área especial de Las Tacas.
+
+2.- Conocer el riesgo de la actividad a desarrollar y hacer decidido libre y espontáneamente mi participación, bajo mi exclusiva responsabilidad.
+
+3.- Comprometerme a utilizar en todo momento los elementes de seguridad proporcionados por la entidad a cargo de la actividad: casco, arnés, cinta y mosquetones.
+Vaciar todos mis bolsillos u otras cosas que puedan caer al vacio, dañando a terceras personas o parte de DistritoAventura. Si ocurriese lo contrario lo que produjera un accidente, me comprometo a cubrir con los gastos y daños ocurridos.
+
+4.- Conocer y aceptar que DistritoAventura y Las Tacas quedan eximidos de toda responsabilidad frente a cualquier accidente o daño que se produzca o sufra como consecuencia de mi participación o utilización del juego Paintball/MTB/Muro de escalada indicado más arriba.")]
         public string ContratoTexto {
             get {
                 return ((string)(this["ContratoTexto"]));

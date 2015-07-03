@@ -60,22 +60,42 @@ namespace POS
             }
         }
 
+        public string RutFormateado
+        {
+            get { return string.Concat(RUT.Substring(0,RUT.Length-1),"-",RUT.Substring(RUT.Length-1)); }
+        }
+
         void doc_PrintPage(object sender, PrintPageEventArgs e)
         {
             //Logo
             Bitmap logo = new Bitmap("logo.png");
-            float logoW = e.Graphics.VisibleClipBounds.Width * Properties.Settings.Default.CompraLogoProp;
-            float logoH = logo.Height * logoW / logo.Width;
+            float logoW, logoH;
+            if (e.Graphics.VisibleClipBounds.Width < logo.Width)
+            {
+                logoW = e.Graphics.VisibleClipBounds.Width * Properties.Settings.Default.CompraLogoProp;
+                logoH = logo.Height * logoW / logo.Width;
+            }
+            else
+            {
+                logoW = logo.Width;
+                logoH = logo.Height;
+            }
             e.Graphics.DrawImage(logo, 0, 0, logoW, logoH);
 
             //Texto
             Font fContrato = new Font(Properties.Settings.Default.ContratoFamily, Properties.Settings.Default.ContratoSize);
             SizeF sizeContrato = e.Graphics.MeasureString(Properties.Settings.Default.ContratoTexto, fContrato, (int)e.Graphics.VisibleClipBounds.Width);
-            e.Graphics.DrawString(Properties.Settings.Default.ContratoTexto, fContrato, Brushes.Black, new RectangleF(0, logoH, sizeContrato.Width, sizeContrato.Height));
+            string tContrato = Properties.Settings.Default.ContratoTexto
+                .Replace("[fecha]",DateTime.Today.ToString("dd \\de MMMM \\de yyy"))
+                .Replace("[rut]",RutFormateado)
+                .Replace("[nombre]", Nombre)
+                .Replace("[apellido]", Apellido)
+                .Replace("[email]", Email);
+            e.Graphics.DrawString(tContrato, fContrato, Brushes.Black, new RectangleF(0, logoH, sizeContrato.Width, sizeContrato.Height));
 
             //Firma
             StringFormat sfFirma = new StringFormat(StringFormatFlags.DirectionRightToLeft);
-            string tFirma = string.Concat("\n\n\n\n\n\n\n", Nombre, " ", Apellido, "\nRUT: ", RUT.Substring(0,RUT.Length-1),"-",RUT.Substring(RUT.Length-1));
+            string tFirma = "\n\n\n\n\n\n\nFirma Apoderado";
             SizeF sFirma = e.Graphics.MeasureString(tFirma,fContrato);
             e.Graphics.DrawString(tFirma, fContrato, Brushes.Black, e.Graphics.VisibleClipBounds.Width, logoH + sizeContrato.Height,sfFirma);
 
